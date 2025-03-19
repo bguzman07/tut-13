@@ -44,3 +44,34 @@
 
 */
 
+window.addEventListener("load", function() {
+   // Retrieve the field/value pairs from the URL
+   var formData = this.location.search.slice(1);
+
+   formData = formData.replace(/\+/g, " ");
+
+   formData = decodeURIComponent(formData);
+
+   var formFields = formData.split(/[&=]/g);
+
+   // Write the field values to the order form
+   this.document.forms.order.elements.orderDate.value = formFields[1];
+   this.document.forms.order.elements.modelName.value = formFields[5];
+   this.document.forms.order.elements.qty.value = formFields[7];
+   this.document.forms.order.elements.initialCost.value = formFields[9];
+   this.document.forms.order.elements.protectionName.value = formFields[13];
+   this.document.forms.order.elements.protectionCost.value = formFields[15];
+   this.document.forms.order.elements.subtotal.value = formFields[17];
+   this.document.forms.order.elements.salesTax.value = formFields[19];
+   this.document.forms.order.elements.totalCost.value = formFields[21];
+});
+
+
+function validateName() {
+   var cardName = document.getElementById("cardName");
+   if (cardName.validity.valueMissing) {
+      cardName.setCustomValidity("Enter your name as it appears on the card");
+   } else {
+      
+   }
+}
